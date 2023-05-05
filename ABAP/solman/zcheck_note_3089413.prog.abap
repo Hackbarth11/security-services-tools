@@ -1905,15 +1905,16 @@ CLASS lcl_report IMPLEMENTATION.
 
 * Minimum Kernel
 * The solution works only if both the client systems as well as the server systems of a trusting/trusted connection runs on a suitable Kernel version:
+* Following table is based on SAP Note 3224161 version 14 (17.04.2023)
 * 7.22       1214
 * 7.49       Not Supported. Use 753 / 754 instead
-* 7.53       (1028) 1036
-* 7.54       (18)  112
-* 7.77       (500) 516
-* 7.81       (251) 300
-* 7.85       (116, 130)  214
-* 7.88       21
-* 7.89       10
+* 7.53       (1028) 1126
+* 7.54       (18)  117
+* 7.77       (500) 546
+* 7.81       Not Supported. Use 785 / 789 instead
+* 7.85       (116, 130)  242  (or AKK Kernel 7.89)
+* 7.88       Not Supported. Use 785 / 789 instead
+* 7.89       114
 
     DATA:
       rel   TYPE i,
@@ -1930,14 +1931,14 @@ CLASS lcl_report IMPLEMENTATION.
         rel   = <fs_result>-kern_rel(3).
         patch = <fs_result>-kern_patchlevel.
 
-        IF     rel = 722 AND patch < 1214
-          OR   rel = 753 AND patch < 1036
-          OR   rel = 754 AND patch < 112
-          OR   rel = 777 AND patch < 516
+        IF     rel = 722 AND patch < 1214    
+          OR   rel = 753 AND patch < 1126
+          OR   rel = 754 AND patch < 117
+          OR   rel = 777 AND patch < 546
           OR   rel = 781 AND patch < 300
-          OR   rel = 785 AND patch < 214
+          OR   rel = 785 AND patch < 242
           OR   rel = 788 AND patch < 21
-          OR   rel = 789 AND patch < 10
+          OR   rel = 789 AND patch < 114
           .
           <fs_result>-validate_kernel = 'Kernel patch required'.
           APPEND VALUE #( fname = 'VALIDATE_KERNEL' color-col = col_total ) TO <fs_result>-t_color.
