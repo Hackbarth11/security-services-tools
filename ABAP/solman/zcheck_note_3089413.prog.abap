@@ -1906,14 +1906,15 @@ CLASS lcl_report IMPLEMENTATION.
 * Minimum Kernel
 * The solution works only if both the client systems as well as the server systems of a trusting/trusted connection runs on a suitable Kernel version:
 * Following table is based on SAP Note 3224161 version 14 (17.04.2023)
+* 7.00-7.21  Not Supported. Use AKK Kernel 722 instead
 * 7.22       1214
-* 7.49       Not Supported. Use 753 / 754 instead
-* 7.53       (1028) 1126
-* 7.54       (18)  117
-* 7.77       (500) 546
-* 7.81       Not Supported. Use 785 / 789 instead
-* 7.85       (116, 130)  242  (or AKK Kernel 7.89)
-* 7.88       Not Supported. Use 785 / 789 instead
+* 7.40-7.52  Not Supported. Use AKK 753 / 754 instead
+* 7.53       1126
+* 7.54       117
+* 7.77       546
+* 7.81       Not Supported. Use AKK 785 / 789 instead
+* 7.85       242 (or AKK Kernel 7.89)
+* 7.86-7.88  Not Supported. Use AKK 785 / 789 instead
 * 7.89       114
 
     DATA:
